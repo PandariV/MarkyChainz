@@ -1,19 +1,32 @@
-var Engine = Matter.Engine,
-    Render = Matter.Render,
-    World = Matter.World,
-    Bodies = Matter.Bodies;
+var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies;
 
-var engine, world, boxy;
+var engine, world, ground;
+var obstacles = [];
 
 function setup() {
-    createCanvas(500, 500);
+    createCanvas(windowWidth, windowHeight);
     engine = Engine.create();
-    world = engine.world;
-    boxy = Bodies.rectangle(69, 69, 69, 69);
     Engine.run(engine);
+
+    world = engine.world;
+    ground = Bodies.rectangle(width/2, height, width, 20, {isStatic: true});
+    World.add(world, ground);
+}
+
+function mousePressed() {
+    obstacles.push(new Obstacle(mouseX, mouseY, 50, 50));
 }
 
 function draw() {
-    background(51);
-    rect(boxy.position.x, boxy.position.y, 69, 69)
+    background(0);
+    noStroke();
+    rectMode(CENTER);
+    
+    fill(0, 255, 0);
+    rect(ground.position.x, ground.position.y, width, 20);
+
+    fill(255);
+    for(var o of obstacles) {
+        o.show();
+    }
 }
