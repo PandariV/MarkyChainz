@@ -23,7 +23,6 @@ class Car {
             World.add(world, c);
         }
         World.add(world, [this.chasis, this.axis, this.wheel1, this.wheel2]);
-        console.log(this.chasis);
     }
 
     show() {
