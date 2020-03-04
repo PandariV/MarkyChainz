@@ -21,6 +21,7 @@ function mousePressed() {
 
 function draw() {
     background(0);
+    frameRate(60);
     noStroke();
     rectMode(CENTER);
     
