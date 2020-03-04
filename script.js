@@ -11,6 +11,8 @@ function setup() {
     world = engine.world;
     ground = Bodies.rectangle(width/2, height, width, 20, {isStatic: true});
     World.add(world, ground);
+
+    car = new Car(250, 250, 50, .001);
 }
 
 function mousePressed() {
@@ -32,7 +34,6 @@ function draw() {
     }
 
     //car
-    car = new Car(50, 50, 100, 60, 20, .01);
     car.show();
     car.update();
 }
