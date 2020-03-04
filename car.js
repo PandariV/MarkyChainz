@@ -1,13 +1,17 @@
 class Car {
-    constructor(x, y, w, h, r, speed) {
+    constructor(speed) {
         this.speed = speed;
-        this.w = w;
-        this.h = h;
-        this.chasis = Bodies.rectangle(x, y, w, h);
-        this.wheel1 = Bodies.circle(x-w/2, y+r*2, r);
-        this.wheel2 = Bodies.circle(x+w/2, y+r*2, r);
-        this.constraint1 = Constraint.create({bodyA: this.chasis, bodyB: this.wheel1, length: 100, stiffness: 1.5});
-        this.constraint2 = Constraint.create({bodyA: this.chasis, bodyB: this.wheel2, length: 100, stiffness: 1.5});
+        this.x = 250;
+        this.y = 250;
+        this.w = 200;
+        this.h = 80;
+        this.r = 30;
+        this.chasis = Bodies.rectangle(this.x, this.y, this.w, this.h);
+        this.axis = Bodies.rectangle(this.x, this.y, this.w, this.h);
+        this.wheel1 = Bodies.circle(this.x-this.w/2, this.y+this.r*2, this.r);
+        this.wheel2 = Bodies.circle(this.x+this.w/2, this.y+this.r*2, this.r);
+        this.constraint1 = Constraint.create({bodyA: this.chasis, bodyB: this.wheel1, length: 100, stiffness: 1.7});
+        this.constraint2 = Constraint.create({bodyA: this.chasis, bodyB: this.wheel2, length: 100, stiffness: 1.7});
         World.add(world, [this.chasis, this.wheel1, this.wheel2, this.constraint1, this.constraint2]);
     }
 
@@ -20,7 +24,8 @@ class Car {
         fill(194, 41, 51);
         translate(this.chasis.position.x, this.chasis.position.y);
         rotate(this.chasis.angle);
-        rect(0, this.h/8, this.w, this.h + this.h/4);
+        //rect(0, this.h/8, this.w, this.h + this.h/4);
+        rect(0, 0, this.w, this.h)
         pop();
     }
 

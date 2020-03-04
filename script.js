@@ -12,7 +12,7 @@ function setup() {
     ground = Bodies.rectangle(width/2, height, width, 40, {isStatic: true});
     World.add(world, ground);
 
-    car = new Car(250, 250, 200, 80, 30, .01);
+    car = new Car(.01);
 }
 
 function mousePressed() {
