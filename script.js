@@ -1,4 +1,4 @@
-var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies;
+var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint;
 
 var engine, world, ground, car;
 var obstacles = [];
@@ -9,10 +9,10 @@ function setup() {
     Engine.run(engine);
 
     world = engine.world;
-    ground = Bodies.rectangle(width/2, height, width, 20, {isStatic: true});
+    ground = Bodies.rectangle(width/2, height, width, 40, {isStatic: true});
     World.add(world, ground);
 
-    car = new Car(250, 250, 50, .001);
+    car = new Car(250, 250, 200, 100, 30, .01);
 }
 
 function mousePressed() {
@@ -20,14 +20,14 @@ function mousePressed() {
 }
 
 function draw() {
-    background(0);
+    background(49, 219, 222);
     frameRate(60);
     noStroke();
     rectMode(CENTER);
     
     //ground
     fill(0, 255, 0);
-    rect(ground.position.x, ground.position.y, width, 20);
+    rect(ground.position.x, ground.position.y, width, 40);
 
     //obstacles
     for(var o of obstacles) {
