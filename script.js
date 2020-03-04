@@ -12,7 +12,7 @@ function setup() {
     ground = Bodies.rectangle(width/2, height, width, 40, {isStatic: true});
     World.add(world, ground);
 
-    car = new Car(250, 250, 200, 100, 30, .01);
+    car = new Car(250, 250, 200, 80, 30, .01);
 }
 
 function mousePressed() {
@@ -24,6 +24,10 @@ function draw() {
     frameRate(60);
     noStroke();
     rectMode(CENTER);
+
+    //car
+    car.show();
+    car.update();
     
     //ground
     fill(0, 255, 0);
@@ -33,8 +37,4 @@ function draw() {
     for(var o of obstacles) {
         o.show();
     }
-
-    //car
-    car.show();
-    car.update();
 }
