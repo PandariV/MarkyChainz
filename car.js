@@ -23,6 +23,7 @@ class Car {
             World.add(world, c);
         }
         World.add(world, [this.chasis, this.axis, this.wheel1, this.wheel2]);
+        console.log(this.chasis);
     }
 
     show() {
@@ -40,7 +41,8 @@ class Car {
     }
 
     update() {
-        this.wheel1.angle += this.speed;
-        this.wheel2.angle = this.wheel1.angle;
+        this.wheel1.angle=this.wheel2.angle+=this.speed;
+        //var angle = this.chasis.angle;
+        //Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.speed, y: sin(angle)*this.speed})
     }
 }

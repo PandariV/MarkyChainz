@@ -1,4 +1,4 @@
-var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint;
+var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body;
 
 var engine, world, ground, car;
 var obstacles = [];
