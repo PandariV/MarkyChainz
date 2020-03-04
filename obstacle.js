@@ -8,13 +8,10 @@ class Obstacle {
 
     show() {
         fill(255);
-        
-        var pos = this.body.position;
-        var angle = this.body.angle;
 
         push();
-        translate(pos.x, pos.y);
-        rotate(angle);
+        translate(this.body.position.x, this.body.position.y);
+        rotate(this.body.angle);
         rect(0, 0, this.w, this.h);
         pop();
     }
