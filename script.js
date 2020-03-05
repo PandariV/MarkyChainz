@@ -32,13 +32,14 @@ function draw() {
     textSize(32);
     fill(255);
     text("Speed: " + txtSpd, 10, 32);
+    text("Target: " + car.speed, 10, 75);
 
     translate(-car.chasis.position.x + car.w + 100, 0);
 
     //car
     car.show();
     if(millis() - mill >= 500) {
-        txtSpd = nf(car.chasis.speed, 2, 2);
+        txtSpd = nf(car.chasis.speed, round(car.chasis.speed).length, 2);
         car.update();
         console.log(car.chasis.speed);
         mill = millis();
