@@ -15,7 +15,7 @@ function setup() {
 
     world = engine.world;
 
-    car = new Car(parseInt(random(1, 5)));
+    car = new Car(parseInt(random(1, 6)));
     terrain = new Terrain();
 
     ground = Bodies.rectangle(width*5/2 - 50, height, width * 5, 40, {isStatic: true});
