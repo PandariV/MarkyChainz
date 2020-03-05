@@ -1,9 +1,11 @@
 class Terrain {
-    constructor(x, y, w, h, s) {
+    constructor(w, h, s) {
         this.w = w;
         this.h = h;
         this.s = s;
-        this.body = Matter.Bodies.trapezoid(x, y, w, h, s, {isStatic: true});
+        this.x = car.chasis.position.x + width;
+        this.y = height - this.h/1.6;
+        this.body = Bodies.trapezoid(this.x, this.y, w, h, s, {isStatic: true});
         World.add(world, this.body);
     }
 

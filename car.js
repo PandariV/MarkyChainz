@@ -46,12 +46,12 @@ class Car {
 
         if(this.chasis.speed > this.speed) {
             if(this.force > 0) {
-                this.force -= .1;
+                this.force -= .01;
             } else {
                 this.force = 0;
             }
         } else {
-            this.force += .1;
+            this.force += .01;
         }
 
         Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.force, y: sin(angle)*this.force});
