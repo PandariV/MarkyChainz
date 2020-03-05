@@ -38,7 +38,7 @@ function draw() {
     translate(-car.chasis.position.x + car.w + 100, 0);
 
     //ground
-    fill(0, 255, 0);
+    fill(58, 201, 63);
     rect(ground.position.x, ground.position.y, width*5, 40);
 
     //terrain

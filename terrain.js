@@ -7,7 +7,7 @@ class Terrain {
     }
 
     show() {
-        fill(84, 69, 27);
+        fill(87, 59, 12);
 
         push();
         translate(this.body.position.x, this.body.position.y);
