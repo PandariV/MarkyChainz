@@ -1,19 +1,24 @@
 class Terrain {
-    constructor(x, y, w, h) {
+    constructor(x, y, w, h, s) {
         this.w = w;
         this.h = h;
-        this.body = Bodies.rectangle(x, y, w, h);
+        this.s = s;
+        this.body = Matter.Bodies.trapezoid(x, y, w, h, s)
         World.add(world, this.body);
     }
 
     show() {
-        fill(87, 59, 12);
+        fill(255);
 
         push();
         translate(this.body.position.x, this.body.position.y);
         rotate(this.body.angle);
-        rect(0, 0, this.w, this.h);
+        beginShape();
+        vertex(-this.w/2, this.h/2);
+        vertex(-this.w/4, -this.h/2);
+        vertex(this.w/4, -this.h/2);
+        vertex(this.w/2, this.h/2);
+        endShape(CLOSE);
         pop();
-        noStroke();
     }
 }

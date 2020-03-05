@@ -56,7 +56,7 @@ function draw() {
 }
 
 function mousePressed() {
-    terrainMap.push(new Terrain(mouseX + car.chasis.position.x - car.w - 100, mouseY, 50, 50));
+    terrainMap.push(new Terrain(mouseX + car.chasis.position.x - car.w - 100, mouseY, 200, 50, 1));
 }
 
 function keyPressed() {
