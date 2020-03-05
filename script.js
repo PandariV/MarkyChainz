@@ -1,11 +1,8 @@
 var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body, Composite = Matter.Composite;
 
-var engine, world, ground, car;
-var terrainMap ;
+var engine, world, ground, car, terrainMap;
 
-var mill;
-
-var font, txtSpd;
+var mill, font, txtSpd;
 
 function preload() {
     font = loadFont("Roboto-Light.ttf");
@@ -17,12 +14,13 @@ function setup() {
     Engine.run(engine);
 
     world = engine.world;
+
+    car = new Car(parseInt(random(1, 5)));
+    terrain = new Terrain();
+
     ground = Bodies.rectangle(width*5/2 - 50, height, width * 5, 40, {isStatic: true});
     World.add(world, ground);
 
-    car = new Car(parseInt(random(1, 5)));
-
-    txtSpd = car.chasis.speed;
     mill = 0;
     terrainMap = [];
 }
@@ -51,13 +49,19 @@ function draw() {
     //car
     car.show();
     if(millis() - mill >= 300) {
-        txtSpd = nf(car.chasis.speed, round(car.chasis.speed).length, 2);
+        txtSpd = nf(car.chasis.speed, nf(parseInt(car.chasis.speed)).length, 2);
         car.update();
-        console.log(car.chasis.speed);
         mill = millis();
     }
 }
 
-function keyPressed() {
-    setup();
+function mousePressed() {
+    terrainMap.push(new Terrain(mouseX + car.chasis.position.x - car.w - 100, mouseY, 50, 50));
 }
+
+function keyPressed() {
+    for(var t of terrainMap) {
+        Composite.remove(world, t.body);
+    }
+    terrainMap = [];
+} 

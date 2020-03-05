@@ -8,8 +8,6 @@ class Terrain {
 
     show() {
         fill(84, 69, 27);
-        stroke(0, 255, 0);
-        strokeWeight(10);
 
         push();
         translate(this.body.position.x, this.body.position.y);
