@@ -18,11 +18,11 @@ function setup() {
     car = new Car(parseInt(random(5, 11)));
     terrain = new Terrain();
 
-    ground = Bodies.rectangle(width*10/2 - 50, height, width * 10, 40, {isStatic: true});
+    ground = Bodies.rectangle(width*10/2 - 50, height, width * 10, 80, {isStatic: true});
     World.add(world, ground);
 
     for(var i  = 0; i < 1; i++) {
-        terr.push(new Terrain(200, 50, 1));
+        terr.push(new Terrain(random(500, 1000), random(50, 150), 1));
     }
     mill = 0;
 }
@@ -41,12 +41,12 @@ function draw() {
 
     //ground
     fill(58, 201, 63);
-    rect(ground.position.x, ground.position.y, width*10, 40);
+    rect(ground.position.x, ground.position.y, width*10, 80);
 
     //terrain
     for(var i = terr.length - 1; i >=0; i--) {
         terr[i].show();
-        if(car.chasis.position.x > (terr[i].body.position.x + car.w*2 + 100)) {
+        if(car.chasis.position.x > (terr[i].body.position.x + terr[i].w + 100)) {
             terr.splice(i, 1);
             terr.push(new Terrain(random(500, 1000), random(50, 150), 1));
             i--;
@@ -60,4 +60,8 @@ function draw() {
         car.update();
         mill = millis();
     }
+}
+
+function keyPressed() {
+    setup();
 }
