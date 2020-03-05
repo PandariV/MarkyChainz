@@ -1,4 +1,4 @@
-class Obstacle {
+class Terrain {
     constructor(x, y, w, h) {
         this.w = w;
         this.h = h;

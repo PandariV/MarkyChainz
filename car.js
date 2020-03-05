@@ -11,6 +11,8 @@ class Car {
         this.wheel1 = Bodies.circle(this.x-this.w/2-this.r, this.y, this.r);
         this.wheel2 = Bodies.circle(this.x+this.w/2+this.r, this.y, this.r);
 
+        this.force = 0;
+
         var constraints = [];
         constraints.push(Constraint.create({bodyA: this.axis, bodyB: this.wheel1, length: this.w/2+this.r+10, stiffness: 1}));
         constraints.push(Constraint.create({bodyA: this.axis, bodyB: this.wheel2, length: this.w/2+this.r+10, stiffness: 1}));
@@ -40,8 +42,19 @@ class Car {
     }
 
     update() {
-        this.wheel1.angle=this.wheel2.angle+=this.speed;
-        //var angle = this.chasis.angle;
-        //Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.speed, y: sin(angle)*this.speed})
+        var angle = this.chasis.angle;
+
+        if(this.chasis.speed > this.speed) {
+            if(this.force > 0) {
+                this.force -= .1;
+            } else {
+                this.force = 0;
+            }
+        } else {
+            this.force += .1;
+        }
+
+        Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.force, y: sin(angle)*this.force})
+
     }
 }
