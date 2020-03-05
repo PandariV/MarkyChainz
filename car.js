@@ -54,7 +54,6 @@ class Car {
             this.force += .1;
         }
 
-        Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.force, y: sin(angle)*this.force})
-
+        Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.force, y: sin(angle)*this.force});
     }
 }
