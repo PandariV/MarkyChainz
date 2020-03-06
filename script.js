@@ -22,7 +22,7 @@ function setup() {
     World.add(world, ground);
 
     for(var i  = 0; i < 1; i++) {
-        terr.push(new Terrain(random(200, width/2), random(20, height/4), 1));
+        terr.push(new Terrain(random(500, 1000), random(50, 150), 1));
     }
     mill = 0;
 }
@@ -48,7 +48,7 @@ function draw() {
         terr[i].show();
         if(car.chasis.position.x > (terr[i].body.position.x + terr[i].w + 100)) {
             terr.splice(i, 1);
-            terr.push(new Terrain(random(200, width/2), random(20, height/4), 1));
+            terr.push(new Terrain(random(500, 1000), random(50, 150), 1));
             i--;
         }
     }
