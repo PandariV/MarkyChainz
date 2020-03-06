@@ -24,7 +24,6 @@ function setup() {
         terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
     }
     mill = 0;
-    console.log(car.chasis);
 }
 
 function draw() {
