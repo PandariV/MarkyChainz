@@ -1,4 +1,4 @@
-var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body, Composite = Matter.Composite;
+var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body;
 
 var engine, world, ground, car, terr = [];
 
@@ -16,19 +16,20 @@ function setup() {
     world = engine.world;
 
     car = new Car(parseInt(random(5, 11)));
-    terrain = new Terrain();
 
-    ground = Bodies.rectangle(width*10/2 - 50, height, width * 10, 80, {isStatic: true});
+    ground = Bodies.rectangle(width/2 - 50, height, width, 80, {isStatic: true});
     World.add(world, ground);
 
     for(var i  = 0; i < 1; i++) {
-        terr.push(new Terrain(random(500, 1000), random(50, 150), 1));
+        terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
     }
     mill = 0;
+    console.log(car.chasis);
 }
 
 function draw() {
     background(49, 219, 222);
+    frameRate(60);
     noStroke();
     rectMode(CENTER);
     textFont(font);
@@ -41,14 +42,16 @@ function draw() {
 
     //ground
     fill(58, 201, 63);
-    rect(ground.position.x, ground.position.y, width*10, 80);
+    Body.translate(ground, {x: (car.chasis.position.x + car.w*2 + 67) - ground.position.x, y: 0});
+    rect(ground.position.x, ground.position.y, width, 80);
 
     //terrain
     for(var i = terr.length - 1; i >=0; i--) {
         terr[i].show();
         if(car.chasis.position.x > (terr[i].body.position.x + terr[i].w + 100)) {
+            World.remove(world, terr[i].body);
             terr.splice(i, 1);
-            terr.push(new Terrain(random(500, 1000), random(50, 150), 1));
+            terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
             i--;
         }
     }

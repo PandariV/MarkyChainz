@@ -13,7 +13,7 @@ class Terrain {
         fill(58, 201, 63);
 
         push();
-        translate(this.body.position.x, this.body.position.y);
+        translate(this.body.position.x, this.body.position.y - this.h/16);
         rotate(this.body.angle);
         beginShape();
         vertex(-this.w/2, this.h/2);
