@@ -4,7 +4,7 @@ class Terrain {
         this.h = h;
         this.s = s;
         this.x = car.chasis.position.x + width;
-        this.y = height - this.h/1.6 - 20;
+        this.y = height - this.h/2 - 20;
         this.body = Bodies.trapezoid(this.x, this.y, w, h, s, {isStatic: true});
         World.add(world, this.body);
     }
