@@ -1,6 +1,6 @@
 var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body;
 
-var engine, world, ground, car, terr = [];
+var engine, world, ground, car, terr;
 
 var mill, font, txtSpd;
 
@@ -24,6 +24,7 @@ function setup() {
         terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
     }
     mill = 0;
+    terr = [];
 }
 
 function draw() {
