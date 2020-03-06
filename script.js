@@ -11,7 +11,6 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight);
     engine = Engine.create();
-    Engine.run(engine);
 
     world = engine.world;
 
@@ -30,6 +29,7 @@ function setup() {
 function draw() {
     background(49, 219, 222);
     frameRate(60);
+    Engine.update(engine);
     noStroke();
     rectMode(CENTER);
     textFont(font);
