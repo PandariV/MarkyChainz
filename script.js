@@ -20,11 +20,11 @@ function setup() {
     ground = Bodies.rectangle(width/2 - 50, height, width, 80, {isStatic: true});
     World.add(world, ground);
 
+    terr = [];
     for(var i  = 0; i < 1; i++) {
         terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
     }
     mill = 0;
-    terr = [];
 }
 
 function draw() {
