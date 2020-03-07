@@ -38,12 +38,12 @@ function draw() {
     text("Speed: " + txtSpd, 10, 32);
     text("Target: " + car.speed, 10, 75);
 
-    translate(-car.chasis.position.x + car.w + 100, 0);
-
     //ground
     fill(58, 201, 63);
-    Body.translate(ground, {x: (car.chasis.position.x + car.w*2 + 67) - ground.position.x, y: 0});
-    rect(ground.position.x, ground.position.y, width, 80);
+    Body.translate(ground, {x: (car.chasis.position.x) - ground.position.x, y: 0});
+    rect(width/2, height, width, 80);
+
+    translate(-car.chasis.position.x + car.w + 100, 0);
 
     //terrain
     for(var i = terr.length - 1; i >=0; i--) {
