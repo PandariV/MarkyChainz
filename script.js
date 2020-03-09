@@ -1,3 +1,4 @@
+  
 var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body;
 
 var engine, world, ground, car, terr;
@@ -14,7 +15,7 @@ function setup() {
 
     world = engine.world;
 
-    car = new Car(parseInt(random(5, 11)));
+    car = new Car(8);
 
     ground = Bodies.rectangle(width/2 - 50, height, width, 80, {isStatic: true});
     World.add(world, ground);
@@ -46,19 +47,20 @@ function draw() {
     translate(-car.chasis.position.x + car.w + 100, 0);
 
     //terrain
-    for(var i = terr.length - 1; i >=0; i--) {
-        terr[i].show();
-        if(car.chasis.position.x > (terr[i].body.position.x + terr[i].w + 100)) {
-            World.remove(world, terr[i].body);
-            terr.splice(i, 1);
-            terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
-            i--;
-        }
-    }
+    terr[0].show();
+    // for(var i = terr.length - 1; i >=0; i--) {
+    //     terr[i].show();
+    //     if(car.chasis.position.x > (terr[i].body.position.x + terr[i].w + 100)) {
+    //         World.remove(world, terr[i].body);
+    //         terr.splice(i, 1);
+    //         terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
+    //         i--;
+    //     }
+    // }
 
     //car
     car.show();
-    if(millis() - mill >= 100) {
+    if(millis() - mill >= 250) {
         txtSpd = nf(car.chasis.speed, nf(parseInt(car.chasis.speed)).length, 2);
         car.update();
         mill = millis();
