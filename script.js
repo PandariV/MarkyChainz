@@ -22,7 +22,7 @@ function setup() {
 
     terr = [];
     for(var i  = 0; i < 1; i++) {
-        terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
+        terr.push(new Terrain(1));
     }
     mill = 0;
 }
