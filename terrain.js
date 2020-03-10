@@ -12,7 +12,7 @@ class Terrain {
 
         for (var i = 0; i <= 1000; i+=5) {
             var temp = noise(i*this.difficulty, car.chasis.position.x*this.difficulty);
-            this.coordinates.push([this.x + i + lastPoint[0],  height - temp*500 - lastPoint[1]]);;
+            this.coordinates.push([this.x + i + this.lastPoint[0],  height - temp*500 - this.lastPoint[1]]);;
         }
         this.coordinates.push([this.x+1000, this.y]);
 
@@ -41,9 +41,15 @@ class Terrain {
         }
         endShape(CLOSE);
         pop();
+
+        push();
+        translate(this.body.vertices[this.body.vertices.length-1].x, this.body.vertices[this.body.vertices.length-1].y);
+        fill(255, 0, 0);
+        rect(0, 0, 10, 10);
+        pop();
     }
 
-    lastPoint() {
-        return [this.coordinates[this.coordinates.length-1][0], this.coordinates[this.coordinates.length-1][1]];
+    last() {
+        return [this.body.vertices[this.body.vertices.length-1].x, this.body.vertices[this.body.vertices.length-1].y];
     }
 }

@@ -48,10 +48,10 @@ function draw() {
     //terrain
     for(var i = terr.length - 1; i >=0; i--) {
         terr[i].show();
-        if(car.chasis.position.x > (terr[i].body.position.x + 1100)) {
+        if((car.chasis.position.x - car.w - 100) > (terr[i].body.vertices[terr[i].body.vertices.length-1].x)) {
+            //terr.push(new Terrain(.002, terr[terr.length-1].last()));
             World.remove(world, terr[i].body);
             terr.splice(i, 1);
-            terr.push(new Terrain(.002, terr[i-1].lastPoint()));
             i--;
         }
     }
