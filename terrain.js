@@ -1,17 +1,18 @@
 class Terrain {
-    constructor(difficulty) {
+    constructor(difficulty, lastPoint) {
         this.difficulty = difficulty;
+        this.lastPoint = lastPoint;
         this.coordinates = [];
         this.vertices = [];
 
-        this.x = car.chasis.position.x + width;
+        this.x = car.chasis.position.x;
         this.y = height - 40;
 
         this.coordinates.push([this.x, this.y]);
 
-        for (var i = 100; i < 1000; i+=100) {
-            var temp = noise(i, car.chasis.position.x, random(100));
-            this.coordinates.push([this.x + i,  height - temp*100 - 40]);;
+        for (var i = 0; i <= 1000; i+=5) {
+            var temp = noise(i*this.difficulty, car.chasis.position.x*this.difficulty);
+            this.coordinates.push([this.x + i + lastPoint[0],  height - temp*500 - lastPoint[1]]);;
         }
         this.coordinates.push([this.x+1000, this.y]);
 
@@ -23,19 +24,7 @@ class Terrain {
         
         this.body = Bodies.fromVertices(this.x, this.y, this.vertices, {isStatic: true});
 
-        // this.highestY = -10000;
-        // this.lowestY = 10000;
-        // this.highestX = -10000;
-        // this.lowestX = 10000;
-
-        // for (var i of this.vertices) {
-        //     this.highestY = Math.max(this.highestY, i.y);t
-        //     this.lowestY = Math.min(this.lowestY, i.y);
-        //     this.highestX = Math.max(this.highestX, i.x)
-        //     this.lowestX = Math.min(this.lowestX, i.x);
-        // }
-
-        Body.translate(this.body, {x: 0, y: -20})
+        Body.translate(this.body, {x: 0, y: -10})
 
         World.add(world, this.body);
     }
@@ -52,7 +41,9 @@ class Terrain {
         }
         endShape(CLOSE);
         pop();
+    }
 
-
+    lastPoint() {
+        return [this.coordinates[this.coordinates.length-1][0], this.coordinates[this.coordinates.length-1][1]];
     }
 }

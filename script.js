@@ -18,11 +18,11 @@ function setup() {
     car = new Car(5);
 
     ground = Bodies.rectangle(width/2 - 50, height, width, 80, {isStatic: true});
-    World.add(world, ground);
+    World.add(world, ground);   
 
     terr = [];
     for(var i  = 0; i < 1; i++) {
-        terr.push(new Terrain(1));
+        terr.push(new Terrain(.002, [0, 0]));
     }
     mill = 0;
 }
@@ -47,16 +47,16 @@ function draw() {
     translate(-car.chasis.position.x + car.w + 100, 0);
 
     //terrain
-    terr[0].show();
-    // for(var i = terr.length - 1; i >=0; i--) {
-    //     terr[i].show();
-    //     if(car.chasis.position.x > (terr[i].body.position.x + terr[i].w + 100)) {
-    //         World.remove(world, terr[i].body);
-    //         terr.splice(i, 1);
-    //         terr.push(new Terrain(random(500, 1000), random(50, 150), .5));
-    //         i--;
-    //     }
-    // }
+   
+    for(var i = terr.length - 1; i >=0; i--) {
+        terr[i].show();
+        if(car.chasis.position.x > (terr[i].body.position.x + 1100)) {
+            World.remove(world, terr[i].body);
+            terr.splice(i, 1);
+            terr.push(new Terrain(.002, terr[i-1].lastPoint()));
+            i--;
+        }
+    }
 
     //car
     car.show();
