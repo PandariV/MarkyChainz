@@ -44,7 +44,7 @@ class Car {
     update() {
         var angle = this.chasis.angle;
 
-        this.force += this.chasis.speed > this.speed ? -0.1 : 0.1;
+        this.force += (this.chasis.speed > this.speed) && (this.force > 0) ? -0.1 : 0.1;
 
         Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.force, y: sin(angle)*this.force});
     }
