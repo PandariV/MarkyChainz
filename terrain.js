@@ -31,8 +31,20 @@ class Terrain {
         console.log(this.body);
         // console.log(this.vertices[0].y - center.y);
         console.log(this.vertices[0]);
-        Body.translate(this.body, {x: 480, y: (this.vertices[0].y - this.body.position.y)*2});
-        //Body.translate(this.body, {x: 400, y: -this.body.height/2});
+
+        var highestY = 0;
+        var lowestY = 10000;
+        var highestX = 0;
+        var lowestX = 10000;
+
+        for (var i of this.vertices) {
+            highestY = Math.max(highestY, i.y);
+            lowestY = Math.min(lowestY, i.y);
+            highestX = Math.max(highestX, i.x);
+            lowestX = Math.min(lowestX, i.x);
+        }
+        //console.log(highest-lowest);
+        Body.translate(this.body, {x: (highestX-lowestX)/2, y: (lowestY-highestY)/2});
 
         World.add(world, this.body);
 
@@ -49,17 +61,17 @@ class Terrain {
     show() {
         fill(255);
 
-        var center = Matter.Vertices.centre(this.body.vertices);
-
         push();
-        translate(this.body.position.x, this.body.position.y - this.h/16);
-        //translate(this.vertices[0].x, this.vertices[0].y);
         rotate(this.body.angle);
         beginShape();
         for(var i = 0; i < this.coordinates.length; i++) {
             vertex(this.coordinates[i][0], this.coordinates[i][1]);
         }
         endShape(CLOSE);
+        var center = Matter.Vertices.centre(this.body.vertices);
+        translate(center.x, center.y);
+        fill(255, 0, 0);
+        rect(0, 0, 10, 10);
         pop();
 
             // for (let x = 0; x < width; x++) {
