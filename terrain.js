@@ -28,13 +28,13 @@ class Terrain {
 
         var center = Matter.Vertices.centre(this.body.vertices);
         //console.log(center);
-        console.log(this.body);
+        //console.log(this.body);
         // console.log(this.vertices[0].y - center.y);
-        console.log(this.vertices[0]);
+        //console.log(this.vertices[0]);
 
-        var highestY = 0;
+        var highestY = -10000;
         var lowestY = 10000;
-        var highestX = 0;
+        var highestX = -10000;
         var lowestX = 10000;
 
         for (var i of this.vertices) {
@@ -43,8 +43,15 @@ class Terrain {
             highestX = Math.max(highestX, i.x);
             lowestX = Math.min(lowestX, i.x);
         }
-        //console.log(highest-lowest);
-        Body.translate(this.body, {x: (highestX-lowestX)/2, y: (lowestY-highestY)/2});
+
+        console.log(center.y + " : " + this.vertices[0].y);
+
+        push();
+        translate((highestX-lowestX)/2, (lowestY-highestY)/2);
+        pop();
+        //Body.translate(this.body, {x: ((highestX+lowestX)/2) - center.x, y: -(center.y - lowestY)/2});
+        Body.translate(this.body, {x: ((highestX+lowestX)/2) - center.x, y: ((highestY+lowestY)/2) - center.y});
+        //Body.translate(this.body, {x: ((center.x - highestX)/2) - center.x, y: -(center.y - lowestY)/2});
 
         World.add(world, this.body);
 
@@ -73,6 +80,14 @@ class Terrain {
         fill(255, 0, 0);
         rect(0, 0, 10, 10);
         pop();
+
+        // for (var i of this.coordinates) {
+        //     push();
+        //     translate(i.x, i.y);
+        //     fill(0, 255, 0);
+        //     rect(0, 0, 10, 10);
+        //     pop();
+        // }
 
             // for (let x = 0; x < width; x++) {
             //     let noiseVal = noise((x) * .01);

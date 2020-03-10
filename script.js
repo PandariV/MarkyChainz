@@ -15,7 +15,7 @@ function setup() {
 
     world = engine.world;
 
-    car = new Car(8);
+    car = new Car(5);
 
     ground = Bodies.rectangle(width/2 - 50, height, width, 80, {isStatic: true});
     World.add(world, ground);
