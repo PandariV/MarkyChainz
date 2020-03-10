@@ -1,7 +1,7 @@
 class Terrain {
-    constructor(difficulty, lastPt) {
+    constructor(difficulty, lastPoint) {
         this.difficulty = difficulty;
-        this.lastPt = lastPt;
+        this.lastPoint = lastPoint;
         this.coordinates = [];
         this.vertices = [];
 
@@ -12,7 +12,7 @@ class Terrain {
 
         for (var i = 0; i <= 1000; i+=5) {
             var temp = noise(i*this.difficulty, car.chasis.position.x*this.difficulty);
-            this.coordinates.push([this.x + i + lastPt[0],  height - temp*500 - lastPt[1]]);;
+            this.coordinates.push([this.x + i + lastPoint[0],  height - temp*500 - lastPoint[1]]);;
         }
         this.coordinates.push([this.x+1000, this.y]);
 

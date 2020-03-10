@@ -1,4 +1,3 @@
-  
 var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body;
 
 var engine, world, ground, car, terr;
@@ -24,10 +23,6 @@ function setup() {
     for(var i  = 0; i < 1; i++) {
         terr.push(new Terrain(.002, [0, 0]));
     }
-    for(var i = 1; i < terr.length + 5; i++) {
-        console.log(terr[i-1]);
-        terr.push(new Terrain(.002, terr[i-1].lastPoint()));
-    }
     mill = 0;
 }
 
@@ -51,15 +46,12 @@ function draw() {
     translate(-car.chasis.position.x + car.w + 100, 0);
 
     //terrain
-   
     for(var i = terr.length - 1; i >=0; i--) {
         terr[i].show();
-        console.log(terr[i]);
         if(car.chasis.position.x > (terr[i].body.position.x + 1100)) {
             World.remove(world, terr[i].body);
             terr.splice(i, 1);
-            
-            terr.push(new Terrain(.002, terr[i].lastPoint()));
+            terr.push(new Terrain(.002, terr[i-1].lastPoint()));
             i--;
         }
     }
