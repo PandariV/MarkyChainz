@@ -17,10 +17,10 @@ class Terrain {
         this.coordinates.push([this.x+1000, this.y]);
 
         for (var i = 0; i < this.coordinates.length; i++) {
-            this.vertices.push(Matter.Vector.create(this.coordinates[i][0], this.coordinates[i][1]));
+            this.vertices.push(Vector.create(this.coordinates[i][0], this.coordinates[i][1]));
         }
 
-        this.actualVertices = Matter.Vertices.create(this.vertices);
+        this.actualVertices = Vertices.create(this.vertices);
         
         this.body = Bodies.fromVertices(this.x, this.y, this.vertices, {isStatic: true});
 

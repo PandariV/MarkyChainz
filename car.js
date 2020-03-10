@@ -73,7 +73,7 @@ class Car {
                 }
             }
 
-            var upRange = (.2 * maxIndex) + .2
+            var upRange = (.2 * maxIndex) + .2;
             var lowRange = upRange - .2;
             this.force += (this.chasis.speed > this.speed) && (this.force > lowRange) ? -0.1 : 0.1;
             this.force += (this.chasis.speed < this.speed) && (this.force < upRange) ? 0.1 : -0.1;

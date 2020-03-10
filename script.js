@@ -1,4 +1,4 @@
-var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body;
+var Engine = Matter.Engine, World = Matter.World, Bodies = Matter.Bodies, Constraint = Matter.Constraint, Body = Matter.Body, Vertices = Matter.Vertices, Vector = Matter.Vector;
 
 var engine, world, ground, car, terr;
 
