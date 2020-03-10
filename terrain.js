@@ -20,9 +20,7 @@ class Terrain {
 
         this.actualVertices = Matter.Vertices.create(this.vertices);
         
-        this.body = Bodies.fromVertices(this.x, this.y, this.vertices, {
-            isStatic: true
-        });
+        this.body = Bodies.fromVertices(this.x, this.y, this.vertices, {isStatic: true});
 
         World.add(world, this.body);
 
@@ -37,8 +35,11 @@ class Terrain {
     show() {
         fill(255);
 
+        var center = Matter.Vertices.centre(this.body.vertices);
+
         push();
         translate(this.body.position.x, this.body.position.y - this.h/16);
+        //translate(this.vertices[0].x, this.vertices[0].y);
         rotate(this.body.angle);
         beginShape();
         for(var i = 0; i < this.coordinates.length; i++) {
