@@ -12,6 +12,8 @@ class Car {
         this.wheel2 = Bodies.circle(this.x+this.w/2+this.r, this.y, this.r);
 
         this.force = 0;
+        this.markov = [0, 0, 0, 0, 0];
+        this.counter = 0;
 
         var constraints = [];
         constraints.push(Constraint.create({bodyA: this.axis, bodyB: this.wheel1, length: this.w/2+this.r+10, stiffness: 1}));
@@ -43,8 +45,40 @@ class Car {
 
     update() {
         var angle = this.chasis.angle;
+        this.counter++;
 
-        this.force += (this.chasis.speed > this.speed) && (this.force > 0) ? -0.1 : 0.1;
+        if(this.counter < 100) {
+            this.force += (this.chasis.speed > this.speed) && (this.force > 0) ? -0.1 : 0.1;
+            if(this.force < .2) {
+                this.markov[0]++;
+            } else if(this.force < .4) {
+                this.markov[1]++;
+            } else if(this.force < .6) {
+                this.markov[2]++;
+            } else if(this.force < .8) {
+                this.markov[3]++;
+            } else {
+                this.markov[4]++;
+            }
+        } else {
+            training = false;
+
+            var max = this.markov[0];
+            var maxIndex = 0;
+
+            for (var i = 1; i < this.markov.length; i++) {
+                if (this.markov[i] > max) {
+                    maxIndex = i;
+                    max = this.markov[i];
+                }
+            }
+
+            var upRange = (.2 * maxIndex) + .2
+            var lowRange = upRange - .2;
+            this.force += (this.chasis.speed > this.speed) && (this.force > lowRange) ? -0.1 : 0.1;
+            this.force += (this.chasis.speed < this.speed) && (this.force < upRange) ? 0.1 : -0.1;
+            console.log(maxIndex + " : " + this.force);
+        }
 
         Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.force, y: sin(angle)*this.force});
     }
