@@ -20,9 +20,11 @@ function setup() {
     World.add(world, ground);   
 
     terr = [];
-    for(var i  = 0; i < 1; i++) {
-        terr.push(new Terrain(.002, [0, 0]));
-    }
+    terr.push(new Terrain(.002, [0, 0]));
+    //terr.push(new Terrain(.002, terr[0].last()));
+    // for(var i = 0; i < 2; i++) {
+    //     terr.push(new Terrain(.002, terr[i].last()));
+    // }
     mill = 0;
 }
 
