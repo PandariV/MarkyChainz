@@ -42,10 +42,10 @@ function draw() {
     text("Target: " + car.speed, 10, 75);
     if(training) {
         fill(255, 0, 0);
-        text("The Ai is training: " + (100 - car.counter)/10 + " seconds remaining...", width - textWidth("The Ai is training: " + "100" + " seconds remaining...") - 20, 32);
+        text("The AI is training: " + (100 - car.counter)/10 + " seconds remaining...", width - textWidth("The AI is training: " + "100" + " seconds remaining...") - 20, 32);
     } else {
         fill(0, 255, 0);
-        text("The Ai is enabled", width - textWidth("The Ai is enabled") - 20, 32);
+        text("The AI is enabled", width - textWidth("The AI is enabled") - 20, 32);
     }
 
     //ground
