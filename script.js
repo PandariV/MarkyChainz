@@ -35,6 +35,7 @@ function draw() {
     textSize(32);
     fill(255);
     text("Speed: " + txtSpd, 10, 32);
+    text("Target: " + car.speed, 10, 75);
     if(training) {
         fill(255, 0, 0);
         text("The AI is training: " + (100 - car.counter)/10 + " seconds remaining...", width - textWidth("The AI is training: " + "100" + " seconds remaining...") - 20, 32);
