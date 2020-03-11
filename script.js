@@ -20,11 +20,7 @@ function setup() {
     World.add(world, ground);   
 
     terr = [];
-    terr.push(new Terrain(.002, [0, 0]));
-    //terr.push(new Terrain(.002, terr[0].last()));
-    // for(var i = 0; i < 2; i++) {
-    //     terr.push(new Terrain(.002, terr[i].last()));
-    // }
+    terr.push(new Terrain(.002, 500));
     mill = 0;
     training = true;
 }
@@ -73,8 +69,4 @@ function draw() {
         car.update();
         mill = millis();
     }
-}
-
-function keyPressed() {
-    setup();
 }
