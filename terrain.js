@@ -15,8 +15,13 @@ class Terrain {
         }
         this.coordinates.push([this.x+1000, this.y]);
 
-        this.coordinates[0][1] = this.y;
-        //this.coordinates[this.coordinates.length-1][1] = this.y + 10;
+        for(var i = 0; i < 40; i++) {
+            this.coordinates[i][1] = this.y - i*((this.y - this.coordinates[40][1])/40);
+        }
+
+        for(var i = this.coordinates.length - 40; i < this.coordinates.length; i++) {
+            this.coordinates[i][1] = this.coordinates[i][1] + (i-(this.coordinates.length - 40))*((this.y - this.coordinates[this.coordinates.length - 41][1])/40);
+        }
 
         for (var i = 0; i < this.coordinates.length; i++) {
             this.vertices.push(Vector.create(this.coordinates[i][0], this.coordinates[i][1]));
@@ -40,13 +45,6 @@ class Terrain {
             vertex(this.coordinates[i][0], this.coordinates[i][1]);
         }
         endShape(CLOSE);
-        pop();
-        console.log(this.coordinates.length);
-
-        push();
-        translate(this.coordinates[0][0], this.coordinates[0][1]);
-        fill(255, 0, 0);
-        rect(0, 0, 10, 10);
         pop();
     }
 }
