@@ -57,9 +57,9 @@ class Car {
 
     update() {
         var angle = this.chasis.angle;
-        this.counter++;
 
         if(this.counter < 100) {
+            this.counter++;
             this.force += (this.chasis.speed > this.speed) && (this.force > 0) ? -0.1 : 0.1;
             if(this.force < .2) {
                 this.markov[0]++;
