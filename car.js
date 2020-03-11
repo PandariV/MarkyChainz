@@ -77,7 +77,6 @@ class Car {
             var lowRange = upRange - .2;
             this.force += (this.chasis.speed > this.speed) && (this.force > lowRange) ? -0.1 : 0.1;
             this.force += (this.chasis.speed < this.speed) && (this.force < upRange) ? 0.1 : -0.1;
-            console.log(maxIndex + " : " + this.force);
         }
 
         Body.applyForce(this.chasis, this.chasis.position, {x: cos(angle)*this.force, y: sin(angle)*this.force});
