@@ -35,11 +35,23 @@ class Car {
         ellipse(this.wheel2.position.x, this.wheel2.position.y, this.wheel2.circleRadius * 2, this.wheel2.circleRadius * 2);
 
         push();
-        fill(194, 41, 51);
+        fill(132, 170, 173);
         translate(this.axis.position.x, this.axis.position.y);
         rotate(this.chasis.angle);
         rect(0, -this.h, this.w*2, this.h)
+        fill(149, 181, 184);
         rect(0, 0, this.w, this.h)
+        pop();
+
+        push();
+        fill(132, 170, 173);
+        translate(this.chasis.position.x, this.chasis.position.y);
+        rotate(this.chasis.angle);
+        beginShape();
+        vertex(-this.w, -this.h/2);
+        vertex(50, -this.h*1.5);
+        vertex(this.w, -this.h/2);
+        endShape(CLOSE);
         pop();
     }
 

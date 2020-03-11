@@ -9,11 +9,11 @@ class Terrain {
 
         this.coordinates.push([this.x, this.y]);
 
-        for (var i = 0; i <= 1000; i+=5) {
+        for (var i = 0; i <= width*1.5; i+=5) {
             var temp = noise(i*this.difficulty, car.chasis.position.x*this.difficulty);
             this.coordinates.push([this.x + i,  height - temp*500]);;
         }
-        this.coordinates.push([this.x+1000, this.y]);
+        this.coordinates.push([this.x+width*1.5, this.y]);
 
         for(var i = 0; i < 40; i++) {
             this.coordinates[i][1] = this.y - i*((this.y - this.coordinates[40][1])/40);
