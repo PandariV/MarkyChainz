@@ -19,8 +19,8 @@ class Terrain {
             this.coordinates[i][1] = this.y - i*((this.y - this.coordinates[40][1])/40);
         }
 
-        for(var i = this.coordinates.length - 40; i < this.coordinates.length; i++) {
-            this.coordinates[i][1] = this.coordinates[i][1] + (i-(this.coordinates.length - 40))*((this.y - this.coordinates[this.coordinates.length - 41][1])/40);
+        for(var i = this.coordinates.length - 60; i < this.coordinates.length; i++) {
+            this.coordinates[i][1] = this.coordinates[i][1] + (i-(this.coordinates.length - 60))*((this.y-25 - this.coordinates[this.coordinates.length - 61][1])/60);
         }
 
         for (var i = 0; i < this.coordinates.length; i++) {

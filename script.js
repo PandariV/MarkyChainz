@@ -51,15 +51,6 @@ function draw() {
 
     translate(-car.chasis.position.x + car.w + 100, 0);
 
-    //test
-    fill(255, 0, 0);
-    for(var i = 0; i < terr[0].coordinates.length; i++) {
-        push();
-        translate(terr[0].coordinates[i][0], terr[0].coordinates[i][1]);
-        rect(0, 0, 10, 10);
-        pop();
-    }
-
     //terrain
     for(var i = terr.length - 1; i >=0; i--) {
         terr[i].show();
