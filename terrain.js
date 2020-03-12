@@ -9,6 +9,18 @@ class Terrain {
 
         this.coordinates.push([this.x, this.y]);
 
+        //giorgi's witchcraft
+        // for (var i = 0; i <= width*1.5; i+=5) {
+        //     var temp = noise(i*this.difficulty, car.chasis.position.x*this.difficulty);
+        //     if(i < 50) {
+        //         this.coordinates.push([this.x + i, height - (temp*500)*(i/50)]);
+        //     } //else if (i > 50 && i < width*1.5 - 50) {
+        //     else  this.coordinates.push([this.x + i,  height - temp*500]);
+        //     //} else {
+        //         //this.coordinates.push([this.x + i, height - (temp*500*i/50)]
+        //     //}
+        // }
+
         for (var i = 0; i <= width*1.5; i+=5) {
             var temp = noise(i*this.difficulty, car.chasis.position.x*this.difficulty);
             this.coordinates.push([this.x + i,  height - temp*500]);;
