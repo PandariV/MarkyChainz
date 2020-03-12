@@ -9,7 +9,7 @@ class Terrain {
 
         this.coordinates.push([this.x, this.y]);
 
-        //giorgi's witchcraft
+        // // giorgi's witchcraft
         // for (var i = 0; i <= width*1.5; i+=5) {
         //     var temp = noise(i*this.difficulty, car.chasis.position.x*this.difficulty);
         //     if(i < 50) {
