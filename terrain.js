@@ -36,7 +36,9 @@ class Terrain {
         }
 
         for (var i = 0; i < this.coordinates.length; i++) {
-            this.vertices.push(Vector.create(this.coordinates[i][0], this.coordinates[i][1]));
+            if(this.coordinates[i] != null) {
+                this.vertices.push(Vector.create(this.coordinates[i][0], this.coordinates[i][1]));
+            }
         }
         
         this.body = Bodies.fromVertices(this.x, this.y, this.vertices, {isStatic: true});
