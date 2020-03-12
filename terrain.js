@@ -27,8 +27,8 @@ class Terrain {
         }
         this.coordinates.push([this.x+width*1.5, this.y]);
 
-        for(var i = 0; i < 40; i++) {
-            this.coordinates[i][1] = this.y - i*((this.y - this.coordinates[40][1])/40);
+        for(var i = 0; i < 60; i++) {
+            this.coordinates[i][1] = this.y - i*((this.y - this.coordinates[60][1])/60);
         }
 
         for(var i = this.coordinates.length - 60; i < this.coordinates.length; i++) {
@@ -36,7 +36,7 @@ class Terrain {
         }
 
         for (var i = 0; i < this.coordinates.length; i++) {
-            if(this.coordinates[i] != null) {
+            if(this.coordinates[i][0] != null) {
                 this.vertices.push(Vector.create(this.coordinates[i][0], this.coordinates[i][1]));
             }
         }
